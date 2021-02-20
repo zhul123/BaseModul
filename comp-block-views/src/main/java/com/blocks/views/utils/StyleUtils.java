@@ -42,11 +42,19 @@ public class StyleUtils {
      * @param mBaseCell
      */
     private void setTextViewStyle(TextView mTextView , BaseCell mBaseCell){
-        if(mTextView == null || mBaseCell == null)
+        if(mTextView == null)
             return;
+        //防止因cell为null导致样式错乱
+        if(mBaseCell == null) {
+            mBaseCell = new BaseCell();
+        }
         JSONObject styleObject = mBaseCell.extras.optJSONObject(ParamsUtils.STYLE);
-        if(styleObject == null)
-            return;
+        //防止item样式错乱
+        if(styleObject == null){
+            styleObject = new JSONObject();
+        }
+
+        //
 
     }
 }
