@@ -1,0 +1,105 @@
+[
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "必须添加此属性",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#ffffff",
+      "margin": [
+        20,10,10,10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "text",
+        "style": {
+          "gravity": "center",
+          "textSize": "20",
+          "textStyle": "bold",
+          "textColor": "#3985de",
+          "margin": [10,10,20,10]
+        },
+        "datas": {
+          "text": "疫情防控系统"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone",
+          "haveBottomLine":true
+        },
+        "datas": {
+          "warnText": "请输入手机号",
+          "mustInput": true,
+          "paramsKey": "username",
+          "leftImgUrl": "image://phone"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password",
+          "haveBottomLine":true,
+          "margin": [10,0,10,0]
+        },
+        "datas": {
+          "warnText": "请输入密码",
+          "mustInput": true,
+          "paramsKey": "password",
+          "encryptionKeys": "password",
+          "leftImgUrl": "image://password"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入验证码",
+          "margin": [10,0,10,0]
+        },
+        "datas": {
+          "warnText": "请输入验证码",
+          "mustInput": true,
+          "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
+          "paramsKey": "captcha",
+          "otherParamsKey": "checkKey",
+          "leftImgUrl": "image://code",
+          "haveBottomLine":true
+        }
+      },
+      {
+        "type": "loginButton",
+        "style": {
+          "margin": [20,0,20,0]
+        },
+        "datas": {
+          "text": "登录",
+          "url": "http://yqfk.bgosp.com/jeecg-boot/sys/login"
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-sticky",
+    "style": {
+      "sticky": "end",
+      "padding": [10]
+    },
+    "items": [
+      {
+        "type": "text",
+        "style": {
+          "gravity": "center"
+        },
+        "datas":{
+          "text": "技术支持：首都信息科技发展有限公司"
+        }
+      }
+    ]
+  }
+]

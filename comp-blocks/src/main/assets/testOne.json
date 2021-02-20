@@ -1,0 +1,571 @@
+[
+  {
+    "type": "container-twoColumn",
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone",
+          "leftImgUrl": "https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png",
+          "haveBottomLine":true
+        },
+        "datas": {
+          "text": "用户名",
+          "warnText": "请输入用户名",
+          "mustInput": true,
+          "paramsKey": "username1"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password",
+          "leftImgUrl": "https://www.baidu.com/img/dong_8f1d47bcb77d74a1e029d8cbb3b33854.gif"
+        },
+        "datas": {
+          "text": "密码",
+          "paramsKey": "password1",
+          "encryptionKeys": "password"
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "ddd",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#ff3c4e",
+      "margin": [
+        10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone",
+          "haveBottomLine":true
+        },
+        "datas": {
+          "text": "用户名",
+          "paramsKey": "username",
+          "leftImgUrl": "image://phone",
+          "chooseDatas": [
+            {
+              "type": "container-oneColumn",
+              "items": [
+                {
+                  "type":"text",
+                  "text": "第一行",
+                  "paramsKey": "第一行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第二行",
+                  "paramsKey": "第二行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行121",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行121",
+                  "paramsKey": "第三行key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行121",
+                  "paramsKey": "第三行key"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password",
+          "haveBottomLine":true
+        },
+        "datas": {
+          "text": "密码",
+          "paramsKey": "password",
+          "encryptionKeys": "password",
+          "leftImgUrl": "image://password",
+          "chooseDatas": [
+            {
+              "type": "container-oneColumn",
+              "items": [
+                {
+                  "type":"text",
+                  "text": "第一行2",
+                  "paramsKey": "第一行2key"
+                },
+                {
+                  "type":"text",
+                  "text": "第二行2",
+                  "paramsKey": "第二行2key"
+                },
+                {
+                  "type":"text",
+                  "text": "第三行2",
+                  "paramsKey": "第三行2key"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入验证码1"
+        },
+        "datas": {
+          "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
+          "paramsKey": "captcha",
+          "otherParamsKey": "checkKey",
+          "leftImgUrl": "image://code"
+        }
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "bgImgUrl": "ddd",
+    "datas": {
+      "text": "登录",
+      "url": "http://yqfk.bgosp.com/jeecg-boot/sys/login"
+    }
+  },
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "ddd",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#f43c4e",
+      "margin": [
+        10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone"
+        },
+        "datas": {
+          "text": "用户名",
+          "paramsKey": "username4",
+          "leftImgUrl": "image://phone"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password"
+        },
+        "datas": {
+          "text": "密码",
+          "paramsKey": "password4",
+          "encryptionKeys": "password",
+          "leftImgUrl": "image://password"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入验证码2"
+        },
+        "datas": {
+          "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
+          "paramsKey": "captcha",
+          "otherParamsKey": "checkKey",
+          "leftImgUrl": "image://code"
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "ddd",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#f53c4e",
+      "margin": [
+        10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone"
+        },
+        "datas": {
+          "text": "用户名",
+          "paramsKey": "username5",
+          "leftImgUrl": "image://phone"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password"
+        },
+        "datas": {
+          "text": "密码",
+          "paramsKey": "password5",
+          "encryptionKeys": "password",
+          "leftImgUrl": "image://password"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入验证码3"
+        },
+        "datas": {
+          "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
+          "paramsKey": "captcha",
+          "otherParamsKey": "checkKey",
+          "leftImgUrl": "image://code"
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "ddd",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#f63c4e",
+      "margin": [
+        10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone"
+        },
+        "datas": {
+          "text": "用户名",
+          "paramsKey": "username6",
+          "leftImgUrl": "image://phone"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password"
+        },
+        "datas": {
+          "text": "密码",
+          "paramsKey": "password6",
+          "encryptionKeys": "password",
+          "leftImgUrl": "image://password"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入验证码4"
+        },
+        "datas": {
+          "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
+          "paramsKey": "captcha",
+          "otherParamsKey": "checkKey",
+          "leftImgUrl": "image://code"
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "ddd",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#f73c4e",
+      "margin": [
+        10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone"
+        },
+        "datas": {
+          "text": "用户名",
+          "paramsKey": "username7",
+          "leftImgUrl": "image://phone"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password"
+        },
+        "datas": {
+          "text": "密码",
+          "paramsKey": "password7",
+          "encryptionKeys": "password",
+          "leftImgUrl": "image://password"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入验证码5"
+        },
+        "datas": {
+          "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
+          "paramsKey": "captcha",
+          "otherParamsKey": "checkKey",
+          "leftImgUrl": "image://code"
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "ddd",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#f83c4e",
+      "margin": [
+        10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone"
+        },
+        "datas": {
+          "text": "用户名",
+          "paramsKey": "username8",
+          "leftImgUrl": "image://phone"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password"
+        },
+        "datas": {
+          "text": "密码",
+          "paramsKey": "password8",
+          "encryptionKeys": "password",
+          "leftImgUrl": "image://password"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入验证码6"
+        },
+        "datas": {
+          "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
+          "paramsKey": "captcha",
+          "otherParamsKey": "checkKey",
+          "leftImgUrl": "image://code"
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "ddd",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#f93c4e",
+      "margin": [
+        10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone"
+        },
+        "datas": {
+          "text": "用户名",
+          "paramsKey": "username9",
+          "leftImgUrl": "image://phone"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password"
+        },
+        "datas": {
+          "text": "密码",
+          "paramsKey": "password9",
+          "encryptionKeys": "password",
+          "leftImgUrl": "image://password"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入验证码7"
+        },
+        "datas": {
+          "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
+          "paramsKey": "captcha",
+          "otherParamsKey": "checkKey",
+          "leftImgUrl": "image://code"
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "ddd",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#f13c4e",
+      "margin": [
+        10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入手机号",
+          "inputType": "phone"
+        },
+        "datas": {
+          "text": "用户名",
+          "paramsKey": "username10",
+          "leftImgUrl": "image://phone"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入密码",
+          "inputType": "password"
+        },
+        "datas": {
+          "text": "密码",
+          "paramsKey": "password10",
+          "encryptionKeys": "password",
+          "leftImgUrl": "image://password"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入验证码8"
+        },
+        "datas": {
+          "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
+          "paramsKey": "captcha",
+          "otherParamsKey": "checkKey",
+          "leftImgUrl": "image://code"
+        }
+      }
+    ]
+  },
+  {
+    "type": "checkText",
+    "datas": {
+      "mustCheck": true,
+      "text": "注册须知",
+      "warnText": "请先阅读须知"
+    }
+  }
+]

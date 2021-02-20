@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.library'
+}
+
+apply plugin: 'com.alibaba.arouter'
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode change.code
+        versionName change.name
+
+        consumerProguardFiles "consumer-rules.pro"
+        //所有想用ARouter的module下的gradle上加上这句话
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api project(":lib-encapsulation-isolation")
+    annotationProcessor libraries.alibabaARouterCompiler
+}

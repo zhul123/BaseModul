@@ -1,0 +1,72 @@
+plugins {
+    id 'com.android.library'
+}
+
+apply plugin: 'com.alibaba.arouter'
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode change.versionCode
+        versionName change.versionName
+
+        consumerProguardFiles "consumer-rules.pro"
+
+        //所有想用ARouter的module下的gradle上加上这句话
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api libraries.supportAppCompat
+    api libraries.material
+    api libraries.multidex
+    api libraries.smartrefresh
+    api libraries.eventbus
+    api libraries.alibabaARouter
+    annotationProcessor libraries.alibabaARouterCompiler
+    api libraries.butterknife
+    api libraries.tangram
+    api libraries.rxjava
+    api libraries.rxandroid
+
+    api(libraries.glide) {
+        exclude group: "com.android.support"
+    }
+    api(libraries.glide_annotations) {
+        exclude group: "com.android.support"
+    }
+    annotationProcessor libraries.glide_compiler
+    api(libraries.glide_integration) {
+        exclude group: "com.android.support"
+    }
+
+    api (libraries.virtualview) {
+        transitive = true
+    }
+    api (libraries.ultraviewpager) {
+        transitive = true
+    }
+    api (libraries.vlayout) {
+        transitive = true
+    }
+}

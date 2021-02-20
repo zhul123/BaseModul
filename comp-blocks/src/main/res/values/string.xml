@@ -1,0 +1,16 @@
+<resources>
+    <string name="floor_pull_down_to_refresh">下拉可以刷新</string>
+    <string name="floor_pull_down_refreshing">刷新中…</string>
+    <string name="floor_pull_up_refresh_finish">刷新完成</string>
+    <string name="floor_pull_up_refresh_failed">刷新失败</string>
+    <string name="floor_release_and_refresh_immediately">松开立即刷新</string>
+    <string name="floor_no_data">没有最新数据了哦~</string>
+
+
+    <string name="floor_pull_up_loading">加载中…</string>
+    <string name="floor_pull_up_load_release">释放立即加载</string>
+    <string name="floor_pull_up_load_finish">加载完成</string>
+    <string name="floor_pull_up_load_failed">加载失败</string>
+    <string name="floor_pull_to_load_more">上拉加载更多</string>
+    <string name="floor_no_more_data">没有更多了哦~</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="floor_divider">#dcdcdc</color>
+    <color name="floor_white">#ffffff</color>
+    <color name="floor_pull_down_refresh_text_color">#b2b2b2</color>
+</resources>

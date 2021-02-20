@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="tip_network_error">网络异常，请稍后重试!</string>
+    <string name="tip_image_load_error">网络开小差了，稍后再试试吧～</string>
+</resources>

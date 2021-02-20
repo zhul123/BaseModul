@@ -1,0 +1,4 @@
+<resources>
+    <string name="err_uri">当前版本不支持此项服务，请更新到最新版本</string>
+    <string name="err_path_empty">当前版本不支持此项服务，请更新到最新版本</string>
+</resources>

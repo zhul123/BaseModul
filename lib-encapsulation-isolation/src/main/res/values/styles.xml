@@ -1,0 +1,44 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Custom_Progress" parent="@android:style/Theme.Dialog">
+        <!-- 无边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--无遮罩效果-->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <declare-styleable name="img_CircleProgressView">
+        <attr name="img_cpv_progressNormalColor" format="color"/>
+        <attr name="img_cpv_progressReachColor" format="color"/>
+        <attr name="img_cpv_progressTextColor" format="color"/>
+        <attr name="img_cpv_progressTextSize" format="dimension"/>
+        <attr name="img_cpv_progressTextOffset" format="dimension"/>
+        <attr name="img_cpv_progressNormalSize" format="dimension"/>
+        <attr name="img_cpv_progressReachSize" format="dimension"/>
+        <attr name="img_cpv_radius" format="dimension"/>
+        <attr name="img_cpv_progressTextVisible" format="boolean"/>
+        <attr name="img_cpv_progressStartArc" format="integer"/>
+        <attr name="img_cpv_progressTextSkewX" format="dimension"/>
+        <attr name="img_cpv_progressTextPrefix" format="string"/>
+        <attr name="img_cpv_progressTextSuffix" format="string"/>
+        <attr name="img_cpv_innerBackgroundColor" format="color"/>
+        <attr name="img_cpv_progressStyle" format="enum">
+            <enum name="Normal" value="0"/>
+            <enum name="FillInner" value="1"/>
+            <enum name="FillInnerArc" value="2"/>
+        </attr>
+        <attr name="img_cpv_innerProgressColor" format="color"/>
+        <attr name="img_cpv_innerPadding" format="dimension"/>
+        <attr name="img_cpv_outerColor" format="color"/>
+        <attr name="img_cpv_outerSize" format="dimension"/>
+        <attr name="img_cpv_reachCapRound" format="boolean"/>
+    </declare-styleable>
+
+</resources>

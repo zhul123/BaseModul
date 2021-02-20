@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.library'
+}
+
+apply plugin: 'com.alibaba.arouter'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        //所有想用ARouter的module下的gradle上加上这句话
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    api project(":lib-encapsulation-isolation")
+    api project(":comp-component")
+    annotationProcessor libraries.alibabaARouterCompiler
+    implementation ("org.apache.shiro:shiro-core:1.4.0"){
+        exclude(module:'shiro-config-core')
+        exclude(module:'shiro-config-ogdl')
+        exclude(module:'shiro-cache')
+        exclude(module:'shiro-lang')
+        exclude(module:'shiro-event')
+        exclude(module:'shiro-crypto-hash')
+        exclude(module:'shiro-crypto-cipher')
+    }
+}

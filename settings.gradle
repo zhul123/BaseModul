@@ -1,0 +1,6 @@
+include ':app'
+include ':comp-blocks'//积木模块
+include ':comp-block-views'//积木模块对应的模板视图
+include ':lib-encapsulation-isolation'//基础封装工具类
+include ':comp-component'//公用内容提供，实体bean，base类等
+rootProject.name = "MyBaseModul"
