@@ -81,20 +81,31 @@
           "text": "登录",
           "url": "http://yqfk.bgosp.com/jeecg-boot/sys/login"
         }
+      },
+      {
+        "type": "button",
+        "style": {
+          "margin": [20,0,20,0]
+        },
+        "datas": {
+          "text": "注册",
+          "url": "http://yqfk.bgosp.com/jeecg-boot/sys/login"
+        }
       }
     ]
   },
   {
     "type": "container-sticky",
     "style": {
-      "sticky": "end",
-      "padding": [10]
+      "sticky": "end"
     },
     "items": [
       {
         "type": "text",
         "style": {
-          "gravity": "center"
+          "gravity": "center",
+          "textSize": 10,
+          "margin": [10]
         },
         "datas":{
           "text": "技术支持：首都信息科技发展有限公司"

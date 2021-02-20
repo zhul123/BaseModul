@@ -17,6 +17,7 @@ import com.base.imagehelper.ImageHelper;
 import com.blocks.views.BuildConfig;
 import com.blocks.views.R;
 import com.blocks.views.utils.ParamsUtils;
+import com.blocks.views.utils.StyleUtils;
 import com.tmall.wireless.tangram.dataparser.concrete.Style;
 import com.tmall.wireless.tangram.structure.BaseCell;
 import com.tmall.wireless.tangram.structure.view.ITangramViewLifeCycle;
@@ -210,34 +211,7 @@ public abstract class BaseFloorView<T extends ViewGroup.LayoutParams> extends Re
      * @param textView
      */
     protected void setOptTextStyle(TextView textView) {
-        if (textView == null)
-            return;
-
-        int textColor = getOptColor(ParamsUtils.TEXTCOLOR, 0);
-        if (textColor != 0) {
-            textView.setTextColor(textColor);
-        } else {
-            textView.setTextColor(DEFAULTTEXTCOLOR);
-        }
-
-        float textSize = (float) getOptDouble(ParamsUtils.TEXTSIZE);
-        if (textSize > 0) {
-            textView.setTextSize(textSize);
-        } else {
-            textView.setTextSize(DEFAULTTEXTSIZE);
-        }
-
-        switch (getOptString(ParamsUtils.TEXTSTYLE)) {
-            case "bold":
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-                break;
-            case "italic":
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
-                break;
-            default:
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-                break;
-        }
+        StyleUtils.getInstance().setTextViewStyle(textView,mBaseCell);
     }
 
     /**
