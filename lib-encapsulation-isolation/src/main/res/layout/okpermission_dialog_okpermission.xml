@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/okpermission_margin_top_bottom"
+        android:layout_marginLeft="@dimen/okpermission_margin_left_right"
+        android:layout_marginRight="@dimen/okpermission_margin_left_right"
+        android:layout_marginTop="@dimen/okpermission_margin_top_bottom"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/okpermission_title_text_color"
+        android:textSize="@dimen/okpermission_title_text_size" />
+
+    <TextView
+        android:id="@+id/msgTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/okpermission_margin_top_bottom"
+        android:layout_marginLeft="@dimen/okpermission_margin_left_right"
+        android:layout_marginRight="@dimen/okpermission_margin_left_right"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/okpermission_msg_text_color"
+        android:textSize="@dimen/okpermission_msg_text_size" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginBottom="@dimen/okpermission_margin_top_bottom"
+        android:layout_marginLeft="@dimen/okpermission_margin_left_right"
+        android:layout_marginRight="@dimen/okpermission_margin_left_right"
+        android:layout_marginTop="@dimen/okpermission_margin_top_bottom"
+        android:background="@color/okpermission_divider" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/okpermission_margin_top_bottom"
+        android:layout_marginLeft="@dimen/okpermission_margin_top_bottom"
+        android:layout_marginRight="@dimen/okpermission_margin_top_bottom"
+        android:background="@color/okpermission_button_background"
+        android:paddingBottom="@dimen/okpermission_margin_left_right"
+        android:paddingTop="@dimen/okpermission_margin_left_right"
+        android:text="@string/okpermission_button_next"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/okpermission_button_text_size" />
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+[
+  {
+    "type": "imageView",
+    "imgUrl": "http://imtest.bgosp.com/api/v1/h5/static/media/work-table.82c1b590.png",
+    "aspectRatio": "2.7"
+  },
+  {
+    "type": "textView",
+    "text": "机关事务热线",
+    "style": {
+      "margin": "[10,16,10,16]",
+      "textSize": "16",
+      "textStyle": "bold"
+    }
+  },
+  {
+    "type": "appList"
+  },
+  {
+    "type": "imageView",
+    "imgUrl": "http://imtest.bgosp.com/api/v1/h5/static/media/jiguanrexian.b7f15489.png",
+    "aspectRatio": "6",
+    "style": {
+      "radius": "6",
+      "margin": "[0,10,0,10]"
+    }
+  }
+]

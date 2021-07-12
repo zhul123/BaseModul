@@ -1,16 +1,31 @@
 [
   {
+    "type": "container-sticky",
+    "style": {
+      "bgColor": "#ffffff"
+    },
+    "items": [
+      {
+        "type": "header",
+        "style": {
+          "bgColor": "#ffffff",
+          "gravity": "center",
+          "textSize": 16
+        },
+        "datas":{
+          "text": "登录页面"
+        }
+      }
+    ]
+  },
+  {
     "type": "container-oneColumn",
     "style": {
       "bgImgUrl": "必须添加此属性",
       "bgDrawableRadius": "10",
       "bgDrawableBgColor": "#ffffff",
-      "margin": [
-        20,10,10,10
-      ],
-      "padding": [
-        10
-      ]
+      "margin": [20,10,10,10],
+      "padding": [10]
     },
     "items": [
       {
@@ -34,6 +49,7 @@
           "haveBottomLine":true
         },
         "datas": {
+          "editText": "15510232366",
           "warnText": "请输入手机号",
           "mustInput": true,
           "paramsKey": "username",
@@ -49,6 +65,7 @@
           "margin": [10,0,10,0]
         },
         "datas": {
+          "editText": "zhulei111...",
           "warnText": "请输入密码",
           "mustInput": true,
           "paramsKey": "password",
@@ -60,7 +77,8 @@
         "type": "edit",
         "style": {
           "hint": "请输入验证码",
-          "margin": [10,0,10,0]
+          "margin": [10,0,10,0],
+          "haveBottomLine":true
         },
         "datas": {
           "warnText": "请输入验证码",
@@ -68,28 +86,31 @@
           "imgUrl": "http://yqfk.bgosp.com/jeecg-boot/sys/randomImage/",
           "paramsKey": "captcha",
           "otherParamsKey": "checkKey",
-          "leftImgUrl": "image://code",
-          "haveBottomLine":true
+          "leftImgUrl": "image://code"
         }
       },
       {
         "type": "loginButton",
         "style": {
-          "margin": [20,0,20,0]
+          "margin": [20,0,20,0],
+          "btnBgColor": "#fff000"
         },
         "datas": {
           "text": "登录",
-          "url": "http://yqfk.bgosp.com/jeecg-boot/sys/login"
+          "url": "http://yqfk.bgosp.com/jeecg-boot/sys/login",
+          "arouterUrl": "/floor/tangramCommon"
         }
       },
       {
-        "type": "button",
+        "type": "text",
         "style": {
-          "margin": [20,0,20,0]
+          "margin": [0,10,10,10],
+          "gravity": "right"
         },
         "datas": {
-          "text": "注册",
-          "url": "http://yqfk.bgosp.com/jeecg-boot/sys/login"
+          "text": "立即注册",
+          "url": "http://yqfk.bgosp.com/jeecg-boot/sys/login",
+          "arouterUrl": "/floor/tangramCommon?url=zhuce.json"
         }
       }
     ]

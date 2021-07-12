@@ -111,7 +111,11 @@ public class AppToast {
         if (null == context) {
             return;
         }
-        makeText(context.getString(res), Toast.LENGTH_SHORT);
+        try {
+            makeText(context.getString(res), Toast.LENGTH_SHORT);
+        }catch (Exception e){
+
+        }
     }
 
     /**
@@ -122,7 +126,11 @@ public class AppToast {
      */
     public void makeText(String str) {
         if (!TextUtils.isEmpty(str)) {
-            makeText(str, Toast.LENGTH_SHORT);
+            try {
+                makeText(str, Toast.LENGTH_SHORT);
+            }catch (Exception e){
+
+            }
         } else {
             Log.d(TAG, "makeText str is null");
         }
@@ -137,7 +145,11 @@ public class AppToast {
      */
     public void makeTextOut(String str, int duration) {
         if (!TextUtils.isEmpty(str)) {
-            makeText(str, duration);
+            try {
+                makeText(str, duration);
+            }catch (Exception e){
+
+            }
         } else {
             Log.d(TAG, "makeText str is null");
         }
@@ -166,7 +178,7 @@ public class AppToast {
      * @param str
      * @param type
      */
-    private void makeText(String str, int type) {
+    private void makeText(String str, int type) throws Exception {
         if (null == context) {
             return;
         }

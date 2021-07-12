@@ -1,15 +1,14 @@
-package com.base.image.util;
+package com.base.imagehelper.util;
 
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.base.image.progress.GlideApp;
+import com.base.imagehelper.progress.GlideApp;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.engine.cache.ExternalPreferredCacheDiskCacheFactory;
 import com.bumptech.glide.load.engine.cache.LruResourceCache;
 
 /**
- * Created by hetao on 15/4/18.
  * Glide工具类
  */
 public class GlideUtils {

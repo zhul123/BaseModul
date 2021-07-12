@@ -1,7 +1,10 @@
 package com.base.utils;
 
 import android.app.Activity;
+import android.app.Application;
+import android.content.ComponentCallbacks;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -13,6 +16,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 
+import com.base.app.BaseApplication;
+
 import java.lang.reflect.Method;
 
 /**
@@ -21,6 +26,109 @@ import java.lang.reflect.Method;
  * @date 2021/01/01
  */
 public class ScreenUtils {
+
+
+    static float sNoncompatDensity = 0;
+    static float sNoncompatScaledDensity = 0;
+
+    /**
+     * 屏幕适配，按宽度适配，360表示设计图宽度360dp
+     * @param activity
+     */
+    public static void setCustomDensityForWidth(Activity activity) {
+        setCustomDensityForWidth(BaseApplication.getInstance(),activity,1280);
+    }
+
+
+    /**
+     * 屏幕适配
+     */
+    public static void setCustomDensityForWidth(Application application, Activity activity, float widthDp) {
+
+
+        DisplayMetrics appDisplayMetrics = application.getResources().getDisplayMetrics();
+
+        if(sNoncompatDensity == 0){
+            sNoncompatDensity = appDisplayMetrics.density;
+            sNoncompatScaledDensity = appDisplayMetrics.scaledDensity;
+            application.registerComponentCallbacks(new ComponentCallbacks() {
+                @Override
+                public void onConfigurationChanged(Configuration newConfig) {
+                    if(newConfig != null && newConfig.fontScale > 0) {
+                        sNoncompatScaledDensity = application.getResources().getDisplayMetrics().scaledDensity;
+                    }
+                }
+
+                @Override
+                public void onLowMemory() {
+
+                }
+            });
+        }
+
+        float targetForWidthDensity = appDisplayMetrics.widthPixels / widthDp;//360dp为设计图宽度
+        float targetScaledDensity = targetForWidthDensity * (sNoncompatScaledDensity/sNoncompatDensity);
+        int targetForWidthDensityDpi = (int) (160 * targetForWidthDensity);
+
+        appDisplayMetrics.density = appDisplayMetrics.scaledDensity = targetForWidthDensity;
+        appDisplayMetrics.scaledDensity = targetScaledDensity;
+        appDisplayMetrics.densityDpi = targetForWidthDensityDpi;
+
+        DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
+        activityDisplayMetrics.density = activityDisplayMetrics.scaledDensity = targetForWidthDensity;
+        activityDisplayMetrics.scaledDensity = targetScaledDensity;
+        activityDisplayMetrics.densityDpi = targetForWidthDensityDpi;
+    }
+
+
+    /**
+     * 屏幕适配，按宽度适配，360表示设计图宽度360dp
+     * @param activity
+     */
+    public static void setCustomDensityForHeight(Activity activity) {
+        setCustomDensityForHeight(BaseApplication.getInstance(),activity,900);
+    }
+    /**
+     * 屏幕适配
+     */
+    public static void setCustomDensityForHeight(Application application, Activity activity, float heightDp) {
+
+
+        DisplayMetrics appDisplayMetrics = application.getResources().getDisplayMetrics();
+
+        if(sNoncompatDensity == 0){
+            sNoncompatDensity = appDisplayMetrics.density;
+            sNoncompatScaledDensity = appDisplayMetrics.scaledDensity;
+            application.registerComponentCallbacks(new ComponentCallbacks() {
+                @Override
+                public void onConfigurationChanged(Configuration newConfig) {
+                    if(newConfig != null && newConfig.fontScale > 0) {
+                        sNoncompatScaledDensity = application.getResources().getDisplayMetrics().scaledDensity;
+                    }
+                }
+
+                @Override
+                public void onLowMemory() {
+
+                }
+            });
+        }
+
+        float targetForHeightDensity = appDisplayMetrics.heightPixels / heightDp;//360dp为设计图宽度
+        float targetScaledDensity = targetForHeightDensity * (sNoncompatScaledDensity/sNoncompatDensity);
+        int targetForHeightDensityDpi = (int) (160 * targetForHeightDensity);
+
+        appDisplayMetrics.density = appDisplayMetrics.scaledDensity = targetForHeightDensity;
+        appDisplayMetrics.scaledDensity = targetScaledDensity;
+        appDisplayMetrics.densityDpi = targetForHeightDensityDpi;
+
+        DisplayMetrics activityDisplayMetrics = activity.getResources().getDisplayMetrics();
+        activityDisplayMetrics.density = activityDisplayMetrics.scaledDensity = targetForHeightDensity;
+        activityDisplayMetrics.scaledDensity = targetScaledDensity;
+        activityDisplayMetrics.densityDpi = targetForHeightDensityDpi;
+    }
+
+
 
     /**
      * 手动计算Density，基准屏幕360，
@@ -62,6 +170,20 @@ public class ScreenUtils {
         int px = 0;
         DisplayMetrics dm = new DisplayMetrics();
         dm = context.getApplicationContext().getResources().getDisplayMetrics();
+        float density = dm.density;
+        px = (int) (dip * density);
+        return px;
+    }
+    /**
+     * 根据dip返回当前设备上的px值
+     *
+     * @param dip
+     * @return
+     */
+    public static int dipToPx(int dip) {
+        int px = 0;
+        DisplayMetrics dm = new DisplayMetrics();
+        dm = BaseApplication.getInstance().getApplicationContext().getResources().getDisplayMetrics();
         float density = dm.density;
         px = (int) (dip * density);
         return px;

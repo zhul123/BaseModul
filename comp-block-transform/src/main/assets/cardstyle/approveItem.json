@@ -1,0 +1,10 @@
+{
+  "type": "imageTextView",
+  "datas": {
+  },
+  "style": {
+    "gravity": "center",
+    "margin": "[6,4,6,4]",
+    "radius": "6"
+  }
+}

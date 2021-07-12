@@ -2,18 +2,13 @@ package com.blocks.views.floorviews;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.blocks.views.base.BaseFloorView;
 import com.blocks.views.utils.ParamsUtils;
+import com.lib.block.entity.base.StyleEntity;
+import com.lib.block.style.Params;
 import com.tmall.wireless.tangram.structure.BaseCell;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 /**
  * 单文字模板
@@ -51,18 +46,18 @@ public class TextFloorView extends BaseFloorView {
     public void postBindView(BaseCell cell) {
         super.postBindView(cell);
 
-        mTextView.setTextColor(getOptColor(ParamsUtils.TEXTCOLOR,DEFAULTCOLOR));
+        mTextView.setTextColor(getOptColor(StyleEntity.TEXTCOLOR,DEFAULTCOLOR));
         int dp10 = dpToPx(10);
         int dp5 = dpToPx(5);
         mTextView.setPadding(dp10,dp5,dp10,dp5);
-        int textSize = getOptInt(ParamsUtils.TEXTSIZE);
+        int textSize = getOptInt(StyleEntity.TEXTSIZE);
         if(textSize > 0) {
             mTextView.setTextSize(textSize);
         }else{
             mTextView.setTextSize(DEFAULTSIZE);
         }
 
-        mTextView.setText(getOptString(ParamsUtils.TEXT));
+        mTextView.setText(getOptString(Params.TEXT));
     }
 
     @Override

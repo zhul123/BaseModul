@@ -1,0 +1,190 @@
+[
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "bgImgUrl": "必须添加此属性",
+      "bgDrawableRadius": "10",
+      "bgDrawableBgColor": "#ffffff",
+      "margin": [
+        20,
+        10,
+        10,
+        10
+      ],
+      "padding": [
+        10
+      ]
+    },
+    "items": [
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请选择部门",
+          "haveBottomLine": true,
+          "ems": 5,
+          "gravity": "right"
+        },
+        "datas": {
+          "warnText": "请选择部门",
+          "mustInput": true,
+          "paramsKey": "dept",
+          "ems": 8,
+          "gravity": "right",
+          "text": "*部门",
+          "chooseDatas": [
+            {
+              "type": "textView",
+              "datas": {
+                "paramsKey": "key1",
+                "text": "value1"
+              }
+            },
+            {
+              "type": "textView",
+              "datas": {
+                "paramsKey": "key2",
+                "text": "value2"
+              }
+            },
+            {
+              "type": "textView",
+              "datas": {
+                "paramsKey": "key3",
+                "text": "value3"
+              }
+            },
+            {
+              "type": "textView",
+              "datas": {
+                "paramsKey": "key4",
+                "text": "value4"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请选择住址区域",
+          "haveBottomLine": true,
+          "ems": 5,
+          "gravity": "right",
+          "margin": [
+            10,
+            0,
+            10,
+            0
+          ]
+        },
+        "datas": {
+          "warnText": "请选择住址区域",
+          "mustInput": true,
+          "paramsKey": "address",
+          "text": "住址区域",
+          "chooseDatas": "http://yqfk.bgosp.com/jeecg-boot/sys/dict/getDictItems/sys_category,name,id,pid=110100"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请选择住址街道",
+          "haveBottomLine": true,
+          "ems": 5,
+          "gravity": "right",
+          "margin": [
+            10,
+            0,
+            10,
+            0
+          ]
+        },
+        "datas": {
+          "warnText": "请选择住址街道",
+          "mustInput": true,
+          "text":"街道",
+          "chooseDatas": "http://yqfk.bgosp.com/jeecg-boot/sys/dict/getDictItems/sys_category,name,id,pid=110100"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入居住地址",
+          "ems": 5,
+          "gravity": "right",
+          "margin": [
+            10,
+            0,
+            10,
+            0
+          ],
+          "haveBottomLine": true
+        },
+        "datas": {
+          "warnText": "请输入居住地址",
+          "mustInput": true,
+          "paramsKey": "add",
+          "text": "居住地址"
+        }
+      },
+      {
+        "type": "edit",
+        "style": {
+          "hint": "请输入单位地址",
+          "ems": 5,
+          "gravity": "right",
+          "margin": [
+            10,
+            0,
+            10,
+            0
+          ],
+          "haveBottomLine": true
+        },
+        "datas": {
+          "warnText": "请输入单位地址",
+          "mustInput": true,
+          "paramsKey": "add",
+          "text": "单位地址"
+        }
+      },
+      {
+        "type": "button",
+        "style": {
+          "margin": [
+            20,
+            0,
+            20,
+            0
+          ],
+          "btnBgColor": "#fff000"
+        },
+        "datas": {
+          "text": "保存",
+          "arouterUrl": "/floor/tangramtest"
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-sticky",
+    "style": {
+      "sticky": "end"
+    },
+    "items": [
+      {
+        "type": "text",
+        "style": {
+          "gravity": "center",
+          "textSize": 10,
+          "margin": [
+            10
+          ]
+        },
+        "datas": {
+          "text": "技术支持：首都信息科技发展有限公司"
+        }
+      }
+    ]
+  }
+]

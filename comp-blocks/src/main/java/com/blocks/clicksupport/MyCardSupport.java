@@ -26,7 +26,7 @@ public class MyCardSupport extends CardSupport {
         try {
             JSONObject styleJson = card.extras.getJSONObject(Card.KEY_STYLE);
             drawable.setColor(getOptColor(styleJson,BGDRAWABLEBGCOLOR));
-            int radius = Style.dp2px(styleJson.getInt(BGDRAWABLERADIUS));
+            int radius = Style.dp2px(styleJson.optInt(BGDRAWABLERADIUS,10));
             drawable.setCornerRadius(radius);
             layoutView.setBackground(drawable);
         } catch (Exception e) {

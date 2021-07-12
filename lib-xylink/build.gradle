@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode change.code
+        versionName change.name
+
+        consumerProguardFiles "consumer-rules.pro"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi-v7a'
+        }
+    }
+
+    signingConfigs {
+        debug {
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/androidx.legacy_legacy-support-core-utils.version'
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar',"*.aar"], dir: 'libs')
+//    implementation(name: 'xylink-sdk-release-2.29.6-972', ext: 'aar') {
+//        transitive = false
+//    }
+//    implementation(name: 'libuvccamera-release', ext: 'aar')
+//    implementation(name: 'common-1.5.20', ext: 'aar')
+//    implementation files('libs/uvccamera-release.jar')
+
+    api project(":lib-encapsulation-isolation")
+
+    implementation libraries.rxBinding2
+    implementation libraries.rxPermission2
+    implementation libraries.matisse
+
+    // 必须, SDK需要依赖这些库, 库版本尽量保持一致, 否则有冲突自行解决
+//    implementation libraries.rxJava2 //base 中已引入
+//    implementation libraries.rxAndroid2 //base 中已引入
+    implementation libraries.gson
+    implementation libraries.okhttp3
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="40dp"
@@ -19,25 +19,39 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ellipsize="end"
+        android:gravity="center"
         android:lines="1"
         android:textStyle="bold"
         android:padding="10dp"
-        android:textColor="#000"
+        android:textColor="@color/default_black"
         android:textSize="15dp"
         tools:text="标题" />
+    <TextView
+        android:id="@+id/tv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/default_blue"
+        android:textSize="15dp"
+        tools:text="更多" />
 
     <ImageView
         android:id="@+id/iv_more"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:minWidth="15dp"
+        android:layout_alignParentRight="true"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingRight="20dp"
+        android:visibility="gone"
         android:scaleType="centerInside"
-        tools:src="@drawable/icon_more" />
+        tools:src="@drawable/icon_save"
+        tools:visibility="visible"/>
 
-</LinearLayout>
+</RelativeLayout>

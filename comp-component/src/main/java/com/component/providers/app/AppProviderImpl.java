@@ -22,7 +22,7 @@ import java.net.URLEncoder;
  * @author :  zl
  * @desc :
  */
-@Route(path = AppProvider.PROVIDER_PATH, name = "App模块")
+@Route(path = AppProvider.Path.PROVIDER_PATH, name = "App模块")
 public class AppProviderImpl implements AppProvider {
 
     private Context mContext;
@@ -110,12 +110,12 @@ public class AppProviderImpl implements AppProvider {
 
     @Override
     public void gotoMainActivity(int selectedIndex) {
-        gotoActivityByARouterUri(Uri.parse(AppProvider.PATH_MAIN + "?selectedIndex=" + selectedIndex));
+        gotoActivityByARouterUri(Uri.parse(AppProvider.Path.PATH_MAIN + "?selectedIndex=" + selectedIndex));
     }
 
     @Override
     public void gotoMainActivity(Context context, int selectedIndex, NavigationCallback callback) {
-        gotoActivityByARouterUri(Uri.parse(AppProvider.PATH_MAIN + "?selectedIndex=" + selectedIndex), context, callback);
+        gotoActivityByARouterUri(Uri.parse(AppProvider.Path.PATH_MAIN + "?selectedIndex=" + selectedIndex), context, callback);
     }
 
     @Override
@@ -126,7 +126,7 @@ public class AppProviderImpl implements AppProvider {
     public void gotoCommonWebViewActivity(String urlString, String extendParam) {
         String tmpUrlString = "";
         try {
-            tmpUrlString = AppProvider.COMMON_WEBVIEW_PATH + "?extend_param=" + URLEncoder.encode(extendParam, "UTF-8");
+            tmpUrlString = AppProvider.Path.COMMON_WEBVIEW_PATH + "?extend_param=" + URLEncoder.encode(extendParam, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

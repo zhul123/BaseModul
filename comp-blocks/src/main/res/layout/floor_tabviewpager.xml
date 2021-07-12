@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.blocks.views.floorviews.TabBarFloorView
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <com.tmall.ultraviewpager.UltraViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="600dp" />
+</LinearLayout>

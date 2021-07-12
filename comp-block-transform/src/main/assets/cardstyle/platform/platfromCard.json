@@ -1,0 +1,38 @@
+[
+  {
+    "type": "container-fiveColumn",
+    "style": {
+      "margin": "[10,0,0,0]"
+    },
+    "items": []
+  },
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "sticky": "start"
+    },
+    "items": [
+      {
+        "type": "tabbar"
+      }
+    ]
+  },
+  {
+    "type": "container-oneColumn",
+    "header": {
+      "type": "textView",
+      "text": "",
+      "style": {
+        "margin": "[10,16,10,16]",
+        "textSize": "16",
+        "textStyle": "bold",
+        "textColor": "#333333"
+      }
+    },
+    "items": [
+      {
+        "type": "tabbar"
+      }
+    ]
+  }
+]

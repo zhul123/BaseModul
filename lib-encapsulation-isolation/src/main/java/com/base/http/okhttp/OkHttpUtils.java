@@ -207,6 +207,17 @@ public class OkHttpUtils
         }
     }
 
+    /** 取消所有请求请求 */
+    public void cancelAll() {
+        if (mOkHttpClient == null) return;
+        for (Call call : mOkHttpClient.dispatcher().queuedCalls()) {
+            call.cancel();
+        }
+        for (Call call : mOkHttpClient.dispatcher().runningCalls()) {
+            call.cancel();
+        }
+    }
+
     public static class METHOD
     {
         public static final String HEAD = "HEAD";
@@ -214,5 +225,6 @@ public class OkHttpUtils
         public static final String PUT = "PUT";
         public static final String PATCH = "PATCH";
     }
+
 }
 

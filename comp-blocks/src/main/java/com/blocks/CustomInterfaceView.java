@@ -7,9 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.base.image.progress.GlideApp;
 import com.base.imagehelper.ImageHelper;
-import com.blocks.R;
 import com.tmall.wireless.tangram.structure.BaseCell;
 import com.tmall.wireless.tangram.structure.view.ITangramViewLifeCycle;
 import com.tmall.wireless.tangram.support.ExposureSupport;
@@ -75,7 +73,7 @@ public class CustomInterfaceView extends LinearLayout implements ITangramViewLif
         } else {
             setBackgroundColor(0xff00ff00);
 //            mImageView.setImageResource(R.mipmap.ic_launcher);
-            GlideApp.with(getContext()).load(cell.optStringParam("imgUrl")).into(mImageView);
+            ImageHelper.getInstance().setCommImage(cell.optStringParam("imgUrl"),mImageView);
         }
         mTextView.setText(String.format(Locale.CHINA, "%s%d: %s", getClass().getSimpleName(),
                 cell.pos, cell.optParam("text")));

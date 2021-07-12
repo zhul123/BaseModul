@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#bc2238</color>
+    <color name="primary">#000</color>
     <color name="white">#ffffff</color>
-    <color name="default_black">#333333</color>
+    <color name="default_black">#1a1a1a</color>
+    <color name="default_gray">#798188</color>
+    <color name="default_light_gray">#dddddd</color>
+    <color name="default_black_gray">#404c56</color>
+    <color name="default_blue">#3296f9</color>≈
+    <color name="default_divider">#dddddd</color>
     <color name="transparent">#00000000</color>
+    <color name="transparent30">#1e000000</color>
+    <color name="transparent50">#48000000</color>
+
+    <color name="okpermission_primary">#3296f9</color>
+    <color name="okpermission_transparent">#00000000</color>
+    <color name="okpermission_white">#ffffff</color>
+    <color name="okpermission_divider">#dddddd</color>
+    <color name="okpermission_button_background">#4dc060</color>
+    <color name="okpermission_title_text_color">#333333</color>
+    <color name="okpermission_msg_text_color">#666666</color>
 </resources>

@@ -1,7 +1,6 @@
 package com.blocks.views.floorviews;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -13,25 +12,24 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.base.http.MyHttpUtils;
 import com.base.imagehelper.ImageHelper;
 import com.blocks.views.R;
 import com.blocks.views.base.BaseFloorView;
 import com.blocks.views.commviews.bottomdialog.BottomPopDialog;
-import com.blocks.views.utils.ParamsUtils;
+import com.blocks.views.utils.style.StyleUtils;
+import com.lib.block.style.Params;
 import com.tmall.wireless.tangram.structure.BaseCell;
 import com.tmall.wireless.tangram.support.SimpleClickSupport;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 
 /**
  * 信息录入
  */
 public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChildClickListener {
-    protected static final String EDITTEXT = "edittext";//输入框默认填充值
+    protected static final String EDITTEXT = "editText";//输入框默认填充值
     protected static final String ENABLE = "enable";//是否可编辑 默认否
     protected static final String INPUTTYPE = "inputType";// edittext输入属性
     protected static final String HINT = "hint";
@@ -73,7 +71,7 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
             mainView.setBackgroundResource(0);
         }
 
-        String text = getOptString(ParamsUtils.TEXT);
+        String text = getOptString(Params.TEXT);
         if (TextUtils.isEmpty(text)) {
             mTextView.setVisibility(GONE);
             mTextView.setText("");
@@ -82,9 +80,12 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
             mTextView.setText(text);
         }
 
-        mTextView.setTextColor(getOptColor(ParamsUtils.TEXTCOLOR, Color.BLACK));
+//        mTextView.setTextColor(getOptColor(StyleEntity.TEXTCOLOR, Color.BLACK));
+//        mTextView.setEms(5);
+//        mTextView.setGravity(Gravity.RIGHT);
+        StyleUtils.getInstance().setTextViewStyle(mTextView,mBaseCell);
 
-        String imgUrl = getOptString(ParamsUtils.IMGURL);
+        String imgUrl = getOptString(Params.IMGURL);
         if (!TextUtils.isEmpty(imgUrl)) {
             mCodeImageView.setVisibility(VISIBLE);
             loadImg(imgUrl, "");
@@ -115,7 +116,7 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
         }
 
 
-        String paramsKey = getOptString(ParamsUtils.PARAMSKEY);
+        String paramsKey = getOptString(Params.PARAMSKEY);
         String hint = getOptString(HINT);
         mEditText.setHint(TextUtils.isEmpty(hint) ? HINTDEFAULT : hint);
         mEditText.setTransformationMethod(null);
@@ -143,7 +144,11 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
             mEditText.setTag(null);
         }
 
-        mEditText.setText(getOptString(EDITTEXT));
+        String edittext = getOptString(EDITTEXT);
+        mEditText.setText(edittext);
+        if(!TextUtils.isEmpty(edittext)){
+            mBaseCell.addBizParam(getOptString(Params.PARAMSKEY), edittext);
+        }
         mEditText.addTextChangedListener(mTextWatcher);
         bindChooseView();
     }
@@ -152,8 +157,8 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
      *
      */
     private void bindChooseView() {
-        JSONArray chooseDatas = getOptJsonArray(ParamsUtils.CHOOSEDATAS);
-        if (chooseDatas != null) {
+        String chooseDatas = getOptString(Params.CHOOSEDATAS);
+        if (!TextUtils.isEmpty(chooseDatas)) {
             mChooseImageView.setVisibility(VISIBLE);
             mEditText.setHint("请选择");
             mChooseImageView.setOnClickListener(new OnClickListener() {
@@ -167,8 +172,8 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
                                     public void defaultClick(View targetView, BaseCell cell, int eventType) {
                                         super.defaultClick(targetView, cell, eventType);
                                         print("==========选择");
-                                        mEditText.setText(getOptString(cell,ParamsUtils.TEXT));
-                                        mEditText.setTag(getOptString(cell,ParamsUtils.PARAMSKEY));
+                                        mEditText.setText(getOptString(cell,Params.TEXT));
+                                        mEditText.setTag(getOptString(cell,Params.PARAMSKEY));
                                         mBottomPopDialog.dismiss();
                                     }
                                 }).build();
@@ -188,11 +193,11 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
     private void loadImg(String imgUrl, String time) {
         if (TextUtils.isEmpty(time)) {
             time = String.valueOf(System.currentTimeMillis());
-            mBaseCell.addBizParam(ParamsUtils.CHECKKEY, time);
+            mBaseCell.addBizParam(Params.CHECKKEY, time);
         }
 
         imgUrl = imgUrl + time;
-        MyHttpUtils.get(imgUrl, null, new MyHttpUtils.HttpCallBack<String>() {
+        MyHttpUtils.get(imgUrl, null, new MyHttpUtils.HttpCallBack() {
             @Override
             public void onSuccess(String result) {
                 if (mCodeImageView != null && result != null) {
@@ -203,7 +208,7 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
             @Override
             public void onFail(String errMsg) {
             }
-        });
+        },this);
     }
 
     @Override
@@ -227,12 +232,12 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
         public void afterTextChanged(Editable s) {
             if (s != null && !TextUtils.isEmpty(s.toString())) {
                 if(mEditText.getTag() != null){
-                    mBaseCell.addBizParam(getOptString(ParamsUtils.PARAMSKEY), mEditText.getTag());
+                    mBaseCell.addBizParam(getOptString(Params.PARAMSKEY), mEditText.getTag());
                 }else {
-                    mBaseCell.addBizParam(getOptString(ParamsUtils.PARAMSKEY), s);
+                    mBaseCell.addBizParam(getOptString(Params.PARAMSKEY), s);
                 }
                         try {
-                            mBaseCell.extras.optJSONObject(ParamsUtils.DATAS).put(EDITTEXT,s);
+                            mBaseCell.extras.optJSONObject(Params.DATAS).put(EDITTEXT,s);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -264,7 +269,7 @@ public class EditFloorView extends BaseFloorView implements BaseFloorView.OnChil
     @Override
     public void onChildClick(View view, BaseCell cell) {
         if (view.getId() == R.id.iv_code_image) {
-            loadImg(getOptString(ParamsUtils.IMGURL), "");
+            loadImg(getOptString(Params.IMGURL), "");
         }
     }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.blocks.views.R;
 import com.blocks.views.base.BaseFloorView;
 import com.blocks.views.utils.ParamsUtils;
+import com.lib.block.style.Params;
 import com.tmall.wireless.tangram.structure.BaseCell;
 
 /**
@@ -55,10 +56,10 @@ public class CheckBoxTextFloorView extends BaseFloorView {
         mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                setDataStringValue(ParamsUtils.CHECKSTATE,isChecked+"");
+                setDataStringValue(Params.CHECKSTATE,isChecked+"");
             }
         });
-        mTextView.setText(getOptString(ParamsUtils.TEXT));
+        mTextView.setText(getOptString(Params.TEXT));
     }
 
     @Override

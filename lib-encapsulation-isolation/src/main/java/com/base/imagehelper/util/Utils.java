@@ -1,4 +1,4 @@
-package com.base.image.util;
+package com.base.imagehelper.util;
 
 import android.content.Context;
 import android.text.TextUtils;

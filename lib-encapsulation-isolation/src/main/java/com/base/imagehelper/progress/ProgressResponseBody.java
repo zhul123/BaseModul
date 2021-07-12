@@ -1,4 +1,4 @@
-package com.base.image.progress;
+package com.base.imagehelper.progress;
 
 import android.os.Handler;
 import android.os.Looper;

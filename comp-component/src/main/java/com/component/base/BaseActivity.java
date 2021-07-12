@@ -10,6 +10,8 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.base.app.BaseApplication;
+import com.base.http.MyHttpUtils;
 import com.base.utils.StatusBarUtil;
 import com.base.widget.CustomProgressDialog;
 import com.base.widget.DetachableDialogCancelListener;
@@ -62,6 +64,7 @@ public abstract class BaseActivity extends FragmentActivity implements IView, Vi
         }
         EventBus.getDefault().unregister(this);
         CustomProgressDialog.cancle();
+        MyHttpUtils.destroy();
 
         super.onDestroy();
     }

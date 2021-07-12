@@ -8,9 +8,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.base.http.okhttp.OkHttpUtils;
 import com.base.http.okhttp.builder.GetBuilder;
 import com.base.http.okhttp.builder.PostStringBuilder;
-import com.base.http.okhttp.callback.Callback;
 import com.base.http.okhttp.callback.StringCallback;
 import com.base.http.okhttp.log.LoggerInterceptor;
+import com.base.utils.savedata.sp.AppSharedPreferencesHelper;
 import com.capinfo.BuildConfig;
 
 import java.util.HashMap;
@@ -20,9 +20,6 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Call;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
-import okhttp3.Response;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MyHttpUtils {
     public enum MediaTypeMap{
@@ -34,8 +31,8 @@ public class MyHttpUtils {
     private static final String SUCCESSKEY = "success";
     private static final String RESULTKEY = "result";
     private static final String MESSAGEKEY = "message";
-    public interface HttpCallBack<T>{
-        public void onSuccess(T result);
+    public interface HttpCallBack{
+        public void onSuccess(String result);
         public void onFail(String errMsg);
     }
 
@@ -92,7 +89,7 @@ public class MyHttpUtils {
                             callBack.onFail(ERRMSG);
                         }else{
                             if (jsonObject.getBoolean(SUCCESSKEY)) {
-                                callBack.onSuccess(jsonObject.getJSONObject(RESULTKEY));
+                                callBack.onSuccess(jsonObject.getString(RESULTKEY));
                             } else {
                                 String message = jsonObject.getString(MESSAGEKEY);
                                 callBack.onFail(TextUtils.isEmpty(message) ? ERRMSG : message);
@@ -105,14 +102,27 @@ public class MyHttpUtils {
             postStringBuilder.build().execute(null);
         }
     }
+    public static void get(String url, HashMap params,HttpCallBack callBack,Object tag){
+        get(url,null,params,callBack,tag);
+    }
 
-    public static void get(String url, HashMap params,HttpCallBack callBack){
+    public static void get(String url,HashMap header, HashMap params,HttpCallBack callBack,Object tag){
         if(TextUtils.isEmpty(url))
             return;
         GetBuilder getBuilder = OkHttpUtils.get().url(url);
         if(params != null){
             getBuilder.params(params);
         }
+        String token = AppSharedPreferencesHelper.getToken();
+        if(header == null) {
+            header = new HashMap(4);
+        }
+        if (!TextUtils.isEmpty(token)) {
+            header.put("X-Access-Token", token);
+        }
+        getBuilder.headers(header);
+        getBuilder.tag(tag);
+
         if(callBack != null) {
             getBuilder.build().execute(new StringCallback() {
                 @Override
@@ -125,16 +135,20 @@ public class MyHttpUtils {
                     if(TextUtils.isEmpty(response)){
                         callBack.onFail(ERRMSG);
                     }else{
-                        JSONObject jsonObject = JSON.parseObject(response);
-                        if(jsonObject == null){
-                            callBack.onFail(ERRMSG);
-                        }else{
-                            if (jsonObject.getBoolean(SUCCESSKEY)) {
-                                callBack.onSuccess(jsonObject.getString(RESULTKEY));
+                        try {
+                            JSONObject jsonObject = JSON.parseObject(response);
+                            if (jsonObject == null) {
+                                callBack.onFail(ERRMSG);
                             } else {
-                                String message = jsonObject.getString(MESSAGEKEY);
-                                callBack.onFail(TextUtils.isEmpty(message) ? ERRMSG : message);
+                                if (jsonObject.getBoolean(SUCCESSKEY)) {
+                                    callBack.onSuccess(jsonObject.getString(RESULTKEY));
+                                } else {
+                                    String message = jsonObject.getString(MESSAGEKEY);
+                                    callBack.onFail(TextUtils.isEmpty(message) ? ERRMSG : message);
+                                }
                             }
+                        }catch (Exception e){
+                            callBack.onSuccess(response);
                         }
                     }
                 }
@@ -142,5 +156,13 @@ public class MyHttpUtils {
         }else {
             getBuilder.build().execute(null);
         }
+    }
+
+    public static void destroy(){
+        OkHttpUtils.getInstance().cancelAll();
+    }
+
+    public static void destroy(Object tag){
+        OkHttpUtils.getInstance().cancelTag(tag);
     }
 }

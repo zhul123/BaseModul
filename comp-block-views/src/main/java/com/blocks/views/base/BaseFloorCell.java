@@ -2,23 +2,18 @@ package com.blocks.views.base;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.os.Build;
 import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.base.imagehelper.ImageHelper;
 import com.blocks.views.BuildConfig;
 import com.blocks.views.R;
-import com.blocks.views.utils.ParamsUtils;
+import com.lib.block.entity.base.StyleEntity;
+import com.lib.block.style.Params;
 import com.tmall.wireless.tangram.dataparser.concrete.Style;
 import com.tmall.wireless.tangram.structure.BaseCell;
-import com.tmall.wireless.tangram.structure.view.ITangramViewLifeCycle;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,7 +22,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implements View.OnClickListener {
 
@@ -37,8 +31,6 @@ public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implemen
     private int DEFAULTTEXTCOLOR = Color.BLACK;
     private int DEFAULTTEXTSIZE = 14;
 
-    protected abstract void onItemClick();
-
     @Override
     public void postBindView(@NonNull T view) {
         super.postBindView(view);
@@ -47,19 +39,9 @@ public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implemen
 
     @Override
     public void onClick(View view) {
-        if (view instanceof BaseFloorView) {
-            onItemClick();
-        } else {
-            if (onChildClickLsn != null) {
-                onChildClickLsn.onChildClick(view, this);
-            }
-        }
-    }
-
-
-    public void setLsn() {
-        if (onChildClickLsn == null) {
-//            setOnClickListener(this);
+        super.onClick(view);
+        if (onChildClickLsn != null) {
+            onChildClickLsn.onChildClick(view, this);
         }
     }
 
@@ -103,8 +85,8 @@ public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implemen
     protected void setImgLayoutParams(View v) {
         if (v == null)
             return;
-        int width = dpToPx(getOptInt(ParamsUtils.IMGWIDTH));
-        int height = dpToPx(getOptInt(ParamsUtils.IMGHEIGHT));
+        int width = dpToPx(getOptInt(StyleEntity.IMGWIDTH));
+        int height = dpToPx(getOptInt(StyleEntity.IMGHEIGHT));
         if (width == 0 && height != 0) {
             width = height;
         }
@@ -135,7 +117,7 @@ public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implemen
     }
 
     protected void loadImage(ImageView imageView) {
-        loadImage(imageView, ParamsUtils.IMGURL, ParamsUtils.RADIUS);
+        loadImage(imageView, Params.IMGURL, StyleEntity.RADIUS);
     }
 
     /**
@@ -148,49 +130,12 @@ public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implemen
     protected void loadImage(ImageView imageView, String imgUrlKey, String radiusKey) {
         if (imageView == null)
             return;
-        System.out.println(String.format("========loadImage;name:%s", optStringParam(ParamsUtils.TEXT)));
 //            ImageHelper.getInstance().setRadiusDrawable(imageView
 //                    , getOptString(imgUrlKey), R.drawable.floor_img_default, getOptInt(radiusKey));
         ImageHelper.getInstance().setCommImage(getOptString(imgUrlKey), imageView, R.drawable.floor_img_default);
 
     }
 
-    /**
-     * 设置配置的字体样式
-     * textColor,textSize,textStyle
-     *
-     * @param textView
-     */
-    protected void setOptTextStyle(TextView textView) {
-        if (textView == null)
-            return;
-
-        int textColor = getOptColor(ParamsUtils.TEXTCOLOR, 0);
-        if (textColor != 0) {
-            textView.setTextColor(textColor);
-        } else {
-            textView.setTextColor(DEFAULTTEXTCOLOR);
-        }
-
-        float textSize = (float) getOptDouble(ParamsUtils.TEXTSIZE);
-        if (textSize > 0) {
-            textView.setTextSize(textSize);
-        } else {
-            textView.setTextSize(DEFAULTTEXTSIZE);
-        }
-
-        switch (getOptString(ParamsUtils.TEXTSTYLE)) {
-            case "bold":
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-                break;
-            case "italic":
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
-                break;
-            default:
-                textView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-                break;
-        }
-    }
 
     /**
      * 设置数据源datas中的参数值
@@ -201,10 +146,10 @@ public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implemen
         if (TextUtils.isEmpty(paramKey))
             return;
         try {
-            JSONObject datasObject = extras.optJSONObject(ParamsUtils.DATAS);
+            JSONObject datasObject = extras.optJSONObject(Params.DATAS);
             if (datasObject == null) {
                 datasObject = new JSONObject();
-                extras.put(ParamsUtils.DATAS, datasObject);
+                extras.put(Params.DATAS, datasObject);
             }
 
             datasObject.put(paramKey, paramValue);
@@ -247,10 +192,10 @@ public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implemen
         } else {
             backStr = optStringParam(key);
             if (TextUtils.isEmpty(backStr)) {
-                if (optJsonObjectParam(ParamsUtils.DATAS) != null) {
-                    backStr = optJsonObjectParam(ParamsUtils.DATAS).optString(key);
-                } else if (optJsonObjectParam(ParamsUtils.STYLE) != null) {
-                    backStr = optJsonObjectParam(ParamsUtils.STYLE).optString(key);
+                if (optJsonObjectParam(Params.DATAS) != null) {
+                    backStr = optJsonObjectParam(Params.DATAS).optString(key);
+                } else if (optJsonObjectParam(Params.STYLE) != null) {
+                    backStr = optJsonObjectParam(Params.STYLE).optString(key);
                 }
             }
         }
@@ -262,8 +207,8 @@ public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implemen
         if (cell == null || TextUtils.isEmpty(key)) {
         } else {
             backStr = cell.optStringParam(key);
-            if (TextUtils.isEmpty(backStr) && cell.optJsonObjectParam(ParamsUtils.DATAS) != null) {
-                backStr = cell.optJsonObjectParam(ParamsUtils.DATAS).optString(key);
+            if (TextUtils.isEmpty(backStr) && cell.optJsonObjectParam(Params.DATAS) != null) {
+                backStr = cell.optJsonObjectParam(Params.DATAS).optString(key);
             }
         }
         return backStr;
@@ -296,8 +241,8 @@ public abstract class BaseFloorCell<T extends View> extends BaseCell<T> implemen
     protected JSONArray getOptJsonArray(String key) {
         JSONArray jsonArray;
         jsonArray = optJsonArrayParam(key);
-        if (jsonArray == null && optJsonObjectParam(ParamsUtils.DATAS) != null) {
-            jsonArray = optJsonObjectParam(ParamsUtils.DATAS).optJSONArray(key);
+        if (jsonArray == null && optJsonObjectParam(Params.DATAS) != null) {
+            jsonArray = optJsonObjectParam(Params.DATAS).optJSONArray(key);
         }
         return jsonArray;
     }

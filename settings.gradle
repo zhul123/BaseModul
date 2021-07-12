@@ -1,6 +1,8 @@
+include ':lib-report'
+include ':lib-block'//解耦积木基本属性 block-views与tansform 使用
+//include ':comp-block-transform'//积木模块数据转换（主要针对后台使用）
 include ':app'
 include ':comp-blocks'//积木模块
-include ':comp-block-views'//积木模块对应的模板视图
 include ':lib-encapsulation-isolation'//基础封装工具类
 include ':comp-component'//公用内容提供，实体bean，base类等
 rootProject.name = "MyBaseModul"

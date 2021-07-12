@@ -1,9 +1,7 @@
 package com.blocks.views.floorviews;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +13,13 @@ import com.alibaba.android.arouter.facade.Postcard;
 import com.blocks.views.R;
 import com.blocks.views.base.BaseFloorView;
 import com.blocks.views.utils.ParamsUtils;
+import com.lib.block.entity.base.StyleEntity;
+import com.lib.block.style.Params;
 import com.tmall.wireless.tangram.structure.BaseCell;
 
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
-import java.util.Base64;
 import java.util.Iterator;
 
 
@@ -117,7 +116,7 @@ public class ImageTextFloorView extends BaseFloorView<LinearLayout.LayoutParams>
             Iterator it = datas.keys();
             while (it.hasNext()) {
                 String key = it.next().toString();
-                if(ParamsUtils.IMGURL.equals(key) || AROUTERURL.equals(key))
+                if(Params.IMGURL.equals(key) || AROUTERURL.equals(key))
                     continue;
                 postcard.withString(key,datas.getString(key));
             }
@@ -141,7 +140,7 @@ public class ImageTextFloorView extends BaseFloorView<LinearLayout.LayoutParams>
             Iterator it = datas.keys();
             while (it.hasNext()) {
                 String key = it.next().toString();
-                if(ParamsUtils.IMGURL.equals(key) || AROUTERURL.equals(key))
+                if(Params.IMGURL.equals(key) || AROUTERURL.equals(key))
                     continue;
                 if (stringBuffer.indexOf("?") == -1) {
                     stringBuffer.append("?");
@@ -189,8 +188,8 @@ public class ImageTextFloorView extends BaseFloorView<LinearLayout.LayoutParams>
     }
 
     protected void setImgLayoutParams() {
-        int width = dpToPx(getOptInt(ParamsUtils.IMGWIDTH));
-        int height = dpToPx(getOptInt(ParamsUtils.IMGHEIGHT));
+        int width = dpToPx(getOptInt(StyleEntity.IMGWIDTH));
+        int height = dpToPx(getOptInt(StyleEntity.IMGHEIGHT));
         if (width == 0 && height != 0) {
             width = height;
         }

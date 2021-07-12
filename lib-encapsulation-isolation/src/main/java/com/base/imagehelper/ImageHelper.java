@@ -11,16 +11,16 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.base.config.ImageLoaderConfig;
-import com.base.image.progress.GlideApp;
-import com.base.image.progress.OnProgressListener;
-import com.base.image.progress.ProgressManager;
-import com.base.image.transformation.BlurTransformation;
-import com.base.image.transformation.CircleTransformation;
-import com.base.image.transformation.CornerTransformation;
-import com.base.image.transformation.RadiusTransformation;
-import com.base.image.transformation.RoundedCornersTransformation;
-import com.base.image.util.GlideCacheUtil;
-import com.base.image.util.GlideUtils;
+import com.base.imagehelper.progress.GlideApp;
+import com.base.imagehelper.progress.OnProgressListener;
+import com.base.imagehelper.progress.ProgressManager;
+import com.base.imagehelper.transformation.BlurTransformation;
+import com.base.imagehelper.transformation.CircleTransformation;
+import com.base.imagehelper.transformation.CornerTransformation;
+import com.base.imagehelper.transformation.RadiusTransformation;
+import com.base.imagehelper.transformation.RoundedCornersTransformation;
+import com.base.imagehelper.util.GlideCacheUtil;
+import com.base.imagehelper.util.GlideUtils;
 import com.base.utils.PageUtil;
 import com.base.utils.ScreenUtils;
 import com.bumptech.glide.Glide;
@@ -780,6 +780,16 @@ public class ImageHelper {
     }
 
     /**
+     * wcd
+     *
+     * @param imageUrl 图片加载的url
+     * @param radius   圆角
+     *                 使用这个方法时候，尽量给imageView设置android:scaleType="fitXY";这样写浪费内存，但是当后台返回的图片与你的view宽高比不一致时，不会出bug
+     */
+    @SuppressLint("CheckResult")
+    public void setRadiusDrawable(final ImageView imageView, String imageUrl, int radius) {
+       setRadiusDrawable(imageView,imageUrl,R.drawable.img_holder_default,radius);
+    } /**
      * wcd
      *
      * @param imageUrl 图片加载的url

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<declare-styleable name="floor_TabBar">
+    <!--这里面只需要设置，a.底部指示器的宽度  b.文字的颜色 c.文字颜色-->
+    <attr name="floor_indicator_width" format="dimension"/>
+    <attr name="floor_indicator_height" format="dimension"/>
+    <attr name="floor_indicator_textSelectSize" format="dimension"/>
+    <attr name="floor_indicator_textSelectColor" format="color"/>
+    <attr name="floor_indicator_textUnSelectColor" format="color"/>
+    <attr name="floor_indicator_radius" format="dimension"/>
+</declare-styleable>
+</resources>

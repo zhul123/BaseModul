@@ -10,7 +10,8 @@ import android.widget.Toast;
 
 import com.blocks.views.R;
 import com.blocks.views.base.BaseFloorView;
-import com.blocks.views.utils.ParamsUtils;
+import com.lib.block.entity.base.StyleEntity;
+import com.lib.block.style.Params;
 import com.tmall.wireless.tangram.structure.BaseCell;
 
 import org.json.JSONArray;
@@ -47,19 +48,19 @@ public class FooterFloorView extends BaseFloorView {
             return;
         }
         //兼容radius为整数情况
-        if (getOptJsonArray(ParamsUtils.RADIUS) != null) {
-            setRadius(getOptJsonArray(ParamsUtils.RADIUS));
+        if (getOptJsonArray(StyleEntity.RADIUS) != null) {
+            setRadius(getOptJsonArray(StyleEntity.RADIUS));
         } else {
-            setRadius(getOptInt(ParamsUtils.RADIUS));
+            setRadius(getOptInt(StyleEntity.RADIUS));
         }
 
-        int radiusColor = getOptColor(ParamsUtils.RADIUSCOLOR, 0);
+        int radiusColor = getOptColor(StyleEntity.RADIUSCOLOR, 0);
         if (radiusColor != 0) {
             drawable.setColor(radiusColor);
         }
         setOptTextStyle(tv_title);
 
-        if (TextUtils.isEmpty(getOptString(ParamsUtils.TEXT)) && footerView != null) {
+        if (TextUtils.isEmpty(getOptString(Params.TEXT)) && footerView != null) {
             tv_title.setVisibility(GONE);
             footerView.setMinimumHeight(radius);
         }else{
@@ -80,7 +81,7 @@ public class FooterFloorView extends BaseFloorView {
         super.postBindView(cell);
 
         if (tv_title != null) {
-            tv_title.setText(getOptString(ParamsUtils.TEXT));
+            tv_title.setText(getOptString(Params.TEXT));
         }
     }
 

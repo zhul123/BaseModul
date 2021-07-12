@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.blocks.views.R;
 import com.blocks.views.base.BaseFloorView;
 import com.blocks.views.utils.ParamsUtils;
+import com.lib.block.style.Params;
 import com.tmall.wireless.tangram.structure.BaseCell;
 
 /**
@@ -52,7 +53,7 @@ public class TitleBarFloorView extends BaseFloorView<LinearLayout.LayoutParams> 
     @Override
     public void postBindView(BaseCell cell) {
         super.postBindView(cell);
-        tv_title.setText(getOptString(ParamsUtils.TEXT));
+        tv_title.setText(getOptString(Params.TEXT));
         loadImage(iv_more);
     }
 

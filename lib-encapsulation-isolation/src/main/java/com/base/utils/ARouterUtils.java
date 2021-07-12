@@ -1,10 +1,13 @@
 package com.base.utils;
 
+import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 
 import com.alibaba.android.arouter.base.UniqueKeyTreeMap;
 import com.alibaba.android.arouter.exception.HandlerException;
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.facade.model.RouteMeta;
 import com.alibaba.android.arouter.facade.template.IInterceptor;
 import com.alibaba.android.arouter.facade.template.IInterceptorGroup;
@@ -15,6 +18,8 @@ import com.alibaba.android.arouter.facade.template.IRouteRoot;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.android.arouter.utils.ClassUtils;
 import com.alibaba.android.arouter.utils.TextUtils;
+import com.capinfo.BuildConfig;
+import com.capinfo.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -128,6 +133,34 @@ public class ARouterUtils {
             }
         }
         return "";
+    }
+
+    public static void goNext(String arouterUrl){
+        goNext(arouterUrl,null,null);
+    }
+
+    public static void goNext(String arouterUrl, Context context){
+        goNext(arouterUrl,context,null);
+    }
+
+    public static void goNext(String arouterUrl, Context context, NavigationCallback callback){
+        if(BuildConfig.DEBUG){
+            Log.e(TAG,arouterUrl);
+        }
+        if(TextUtils.isEmpty(arouterUrl))
+            return;
+        try {
+            if (null != context && null != callback) {
+                ARouter.getInstance().build(Uri.parse(arouterUrl)).navigation(context, callback);
+            } else if (null != context) {
+                ARouter.getInstance().build(Uri.parse(arouterUrl)).navigation(context);
+            } else {
+                ARouter.getInstance().build(Uri.parse(arouterUrl)).navigation();
+            }
+            //抛出异常，防止uri不对的情况下app崩溃
+        } catch (HandlerException e) {
+            AppToast.getInstance((Application) mContext.getApplicationContext()).makeText(R.string.err_uri);
+        }
     }
 
 }

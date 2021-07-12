@@ -14,6 +14,28 @@ import java.util.List;
  * @date 2021.01.01
  */
 public class PageUtil {
+    private long lastTime = 0;
+    private long DEFAULTTIME = 800;
+    private static  PageUtil instance = null;
+
+    public static PageUtil getInstance(){
+        if(instance == null){
+            synchronized (PageUtil.class){
+                if(instance == null){
+                    instance = new PageUtil();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public boolean isDouble(){
+        long curTime = System.currentTimeMillis();
+        if(curTime - lastTime < DEFAULTTIME){
+            return true;
+        }
+        return false;
+    }
     /**
      * 判断当前activity是否还活着
      *

@@ -35,6 +35,18 @@ android {
 dependencies {
 
     annotationProcessor libraries.alibabaARouterCompiler
-    api project(":comp-block-views")
     api project(":comp-component")
+    api project(":lib-encapsulation-isolation")
+//    api project(":comp-block-transform")
+    api project(":lib-block")
+    annotationProcessor libraries.alibabaARouterCompiler
+    implementation ("org.apache.shiro:shiro-core:1.4.0"){
+        exclude(module:'shiro-config-core')
+        exclude(module:'shiro-config-ogdl')
+        exclude(module:'shiro-cache')
+        exclude(module:'shiro-lang')
+        exclude(module:'shiro-event')
+        exclude(module:'shiro-crypto-hash')
+        exclude(module:'shiro-crypto-cipher')
+    }
 }

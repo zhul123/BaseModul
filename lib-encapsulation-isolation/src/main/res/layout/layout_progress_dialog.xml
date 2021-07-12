@@ -2,20 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
     android:background="@android:color/transparent"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <ProgressBar
-        android:id="@+id/pb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:indeterminateDuration="800"
-        android:indeterminate="false"
-        android:indeterminateDrawable="@drawable/icon_loading"
-        android:layout_gravity="center_horizontal" />
-
+    <include layout="@layout/layout_progress"/>
     <TextView
         android:id="@+id/tv_message"
         android:layout_width="wrap_content"
@@ -24,6 +17,7 @@
         android:layout_marginTop="3dp"
         android:textColor="@color/primary"
         android:textSize="16sp"
+        tools:visibility="visible"
         android:visibility="gone"/>
 
 </LinearLayout>

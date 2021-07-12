@@ -1,0 +1,21 @@
+{
+  "type": "container-fiveColumn",
+  "header": {
+    "datas": {
+      "text": ""
+    },
+    "style": {
+      "margin": "[8,0,10,14]",
+      "padding": "[6]",
+      "maxWidth": 0,
+      "textColor": "#333333",
+      "textSize": "16"
+    },
+    "type": "textView"
+  },
+  "items": [],
+  "style": {
+    "bgImgUrl": "设置内置bgground",
+    "margin": "[10]"
+  }
+}

@@ -12,10 +12,12 @@ ext.versions = [
 
         buildTools              : '30.0.2',
 
-        applicationId           : "com.capinfo.fysystem",
+        applicationId           : "com.capinfo.base",
 
-        androidGradlePlugin     : '4.1.1',
+        androidGradlePlugin     : '3.6.0',//replugin 2.3.4支持最高版本 3.6.0-alpha01
         supportLibs             : '1.0.0',
+        replugin                : '2.3.4',
+        repluginLib             : '2.3.4',
         multidex                : '2.0.1',
         alibabaARouter          : '1.5.1',
         alibabaARouterCompiler  : '1.5.1',
@@ -40,11 +42,19 @@ ext.versions = [
         butterknife_compiler    : '10.2.0',
         smartrefresh            : '1.1.2',
         eventbus                : '3.1.1',
+        fastjson                : '1.1.70.android',
+        mmkv                    : '1.2.7',
+        mars                    : '1.2.5',
+        okSocket                : '4.1.0',
+        retrofitNet                  : "2.4.0",
+        converterGsonNet             : "2.4.0",
+        retrofit2Rxjava2AdapterNet   : "1.0.0-RC3",
 ]
 
 ext.gradlePlugins = [
-        android: "com.android.tools.build:gradle:$versions.androidGradlePlugin",
-        apt    : "com.neenbedankt.gradle.plugins:android-apt:$versions.aptGradlePlugin"
+        android : "com.android.tools.build:gradle:$versions.androidGradlePlugin",
+        apt     : "com.neenbedankt.gradle.plugins:android-apt:$versions.aptGradlePlugin",
+        replugin: "com.qihoo360.replugin:replugin-host-gradle:$versions.replugin"
 ]
 
 
@@ -65,7 +75,14 @@ ext.libraries = [
         butterknife_compiler    : "com.jakewharton:butterknife-compiler:$versions.butterknife_compiler",
         smartrefresh            : "com.scwang.smartrefresh:SmartRefreshLayout:$versions.smartrefresh",
         eventbus                : "org.greenrobot:eventbus:$versions.eventbus",
-
+        fastjson                : "com.alibaba:fastjson:$versions.fastjson",
+        mmkv                    : "com.tencent:mmkv-static:$versions.mmkv",
+        repluginLib             : "com.qihoo360.replugin:replugin-host-lib:$versions.repluginLib",
+        mars                    : "com.tencent.mars:mars-core:$versions.mars",
+        okSocket                : "com.tonystark.android:socket:$versions.okSocket",
+        retrofitNet               : "com.squareup.retrofit2:retrofit:$versions.retrofitNet",
+        converterGsonNet          : "com.squareup.retrofit2:converter-gson:$versions.converterGsonNet",
+        retrofit2Rxjava2AdapterNet: "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$versions.retrofit2Rxjava2AdapterNet",
         //------tangrem框架依赖包相关引入开始-----
         tangram                 : "com.alibaba.android:tangram:$versions.tangram",
         rxjava                  : "io.reactivex.rxjava2:rxjava:$versions.rxjava",

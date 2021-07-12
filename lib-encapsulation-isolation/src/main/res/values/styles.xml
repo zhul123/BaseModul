@@ -1,4 +1,4 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Custom_Progress" parent="@android:style/Theme.Dialog">
         <!-- 无边框 -->
@@ -8,7 +8,7 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/transparent50</item>
         <item name="android:windowNoTitle">true</item>
         <!--无遮罩效果-->
         <item name="android:backgroundDimEnabled">false</item>
@@ -40,5 +40,60 @@
         <attr name="img_cpv_outerSize" format="dimension"/>
         <attr name="img_cpv_reachCapRound" format="boolean"/>
     </declare-styleable>
+    <!-- dialog title style-->
+    <style name="okpermission_common_dialog_title_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/okpermission_title_text_color</item>
+        <item name="android:textSize">@dimen/okpermission_common_dialog_title_textsize</item>
+    </style>
 
+    <!-- dialog msg style-->
+    <style name="okpermission_common_dialog_msg_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#686868</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="okpermission_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/okpermission_primary</item>
+        <item name="colorPrimaryDark">@color/okpermission_white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/okpermission_transparent</item>
+    </style>
+
+    <style name="okpermission_loading" parent="okpermission_AppTheme">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item><!-- 沉浸式状态栏，只能在api19 4.4以上机型生效 -->
+    </style>
+
+    <!-- common dialog style -->
+    <style name="commonDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+
+    <!--提示框-->
+    <style name="alert_hint_dialog" parent="android:Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.4</item>
+    </style>
+
+    <style name="CustomPopWindowStyle">
+        <item name="android:windowEnterAnimation">@anim/popwindow_anim_in</item>
+<!--        <item name="android:windowExitAnimation">@anim/popwindow_anim_out</item>-->
+    </style>
 </resources>

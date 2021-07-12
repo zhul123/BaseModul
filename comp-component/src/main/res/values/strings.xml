@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="err_path_empty">当前版本不支持次功能，请升级后重试</string>
+</resources>

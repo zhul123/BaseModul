@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.blocks.views.R;
 import com.blocks.views.base.BaseFloorView;
 import com.blocks.views.utils.ParamsUtils;
+import com.lib.block.style.Params;
+import com.tmall.wireless.tangram.eventbus.BusSupport;
 import com.tmall.wireless.tangram.structure.BaseCell;
 
 import org.json.JSONArray;
@@ -31,7 +33,7 @@ import org.json.JSONException;
 public class HeaderFloorView extends BaseFloorView {
     private TextView tv_title;
     private View headerView;
-    private GradientDrawable drawable;
+//    private GradientDrawable drawable;
     private int radius;
 
     public HeaderFloorView(Context context) {
@@ -42,29 +44,29 @@ public class HeaderFloorView extends BaseFloorView {
     public void init() {
         headerView = LayoutInflater.from(mContext).inflate(R.layout.floor_header, null);
         addView(headerView, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        drawable = new GradientDrawable();
+//        drawable = new GradientDrawable();
         tv_title = findViewById(R.id.tv_title);
     }
 
     @Override
     protected void setCustomStyle() {
         //兼容radius为整数情况
-        if (getOptJsonArray(ParamsUtils.RADIUS) != null) {
+        /*if (getOptJsonArray(ParamsUtils.RADIUS) != null) {
             setRadius(getOptJsonArray(ParamsUtils.RADIUS));
         } else {
             setRadius(getOptInt(ParamsUtils.RADIUS));
-        }
+        }*/
 
-        int radiusColor = getOptColor(ParamsUtils.RADIUSCOLOR,0);
+        /*int radiusColor = getOptColor(ParamsUtils.RADIUSCOLOR,0);
         if (radiusColor != 0) {
             drawable.setColor(radiusColor);
         }else{
             drawable.setColor(Color.TRANSPARENT);
-        }
+        }*/
 
         setOptTextStyle(tv_title);
 
-        if(TextUtils.isEmpty(getOptString(ParamsUtils.TEXT)) && headerView != null){
+        if(TextUtils.isEmpty(getOptString(Params.TEXT)) && headerView != null){
             tv_title.setVisibility(GONE);
             headerView.setMinimumHeight(radius);
         }else{
@@ -85,7 +87,7 @@ public class HeaderFloorView extends BaseFloorView {
         super.postBindView(cell);
 
         if (tv_title != null) {
-            tv_title.setText(getOptString(ParamsUtils.TEXT));
+            tv_title.setText(getOptString(Params.TEXT));
         }
     }
 
@@ -93,7 +95,7 @@ public class HeaderFloorView extends BaseFloorView {
     public void postUnBindView(BaseCell cell) {
 
     }
-
+/*
     private void setRadius(int radius) {
         this.radius  =  radius;
         drawable.setCornerRadius(dpToPx(radius));
@@ -137,5 +139,5 @@ public class HeaderFloorView extends BaseFloorView {
             }
         }
         headerView.setBackground(drawable);
-    }
+    }*/
 }

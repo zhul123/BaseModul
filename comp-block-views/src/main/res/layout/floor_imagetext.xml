@@ -13,6 +13,7 @@
         android:maxWidth="55dp"
         android:maxHeight="55dp"
         android:adjustViewBounds="true"
+        tools:src="@drawable/img_down"
         android:scaleType="centerInside" />
 
     <TextView
@@ -22,7 +23,6 @@
         android:layout_marginTop="10dp"
         android:maxLines="2"
         android:minEms="4"
-        android:gravity="center_horizontal"
         android:ellipsize="end"
         android:text="title"
         android:textColor="#000"

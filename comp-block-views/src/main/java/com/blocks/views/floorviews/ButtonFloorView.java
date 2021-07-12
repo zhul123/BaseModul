@@ -7,20 +7,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.alibaba.fastjson.JSONObject;
 import com.base.http.MyHttpUtils;
-import com.blocks.views.R;
 import com.blocks.views.base.BaseFloorView;
 import com.blocks.views.utils.CheckMustException;
 import com.blocks.views.utils.FloorUtils;
 import com.blocks.views.utils.ParamsUtils;
-import com.component.providers.common.BlocksProvider;
+import com.blocks.views.utils.style.StyleUtils;
+import com.lib.block.style.Params;
+import com.lib.block.style.ViewType;
 import com.tmall.wireless.tangram.core.adapter.GroupBasicAdapter;
-import com.tmall.wireless.tangram.dataparser.concrete.Card;
 import com.tmall.wireless.tangram.structure.BaseCell;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +41,8 @@ public class ButtonFloorView extends BaseFloorView {
     @Override
     public void postBindView(BaseCell cell) {
         super.postBindView(cell);
-        mButton.setText(getOptString(ParamsUtils.TEXT));
+        mButton.setText(getOptString(Params.TEXT));
+        StyleUtils.getInstance().setButtonStyle(mButton,mBaseCell);
     }
 
     @Override
@@ -75,9 +75,9 @@ public class ButtonFloorView extends BaseFloorView {
     }
 
     private void request(Map params){
-        MyHttpUtils.post(getOptString(ParamsUtils.URL), params, new MyHttpUtils.HttpCallBack<JSONObject>() {
+        MyHttpUtils.post(getOptString(Params.URL), params, new MyHttpUtils.HttpCallBack() {
             @Override
-            public void onSuccess(JSONObject result) {
+            public void onSuccess(String result) {
                 Toast.makeText(mContext,result.toString(),Toast.LENGTH_SHORT).show();
             }
 

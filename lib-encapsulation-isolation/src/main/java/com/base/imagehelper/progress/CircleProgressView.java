@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ProgressBar;
 
-import com.base.image.util.Utils;
+import com.base.imagehelper.util.Utils;
 import com.capinfo.R;
 
 import java.lang.annotation.Retention;

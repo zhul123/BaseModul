@@ -1,4 +1,4 @@
-package com.base.image.progress;
+package com.base.imagehelper.progress;
 
 /**
  * 定义回调接口

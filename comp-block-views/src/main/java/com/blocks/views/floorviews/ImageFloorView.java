@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.blocks.views.base.BaseFloorView;
-import com.blocks.views.utils.ParamsUtils;
+import com.lib.block.entity.base.StyleEntity;
 import com.tmall.wireless.tangram.structure.BaseCell;
 
 import org.json.JSONArray;
@@ -52,9 +52,9 @@ public class ImageFloorView extends BaseFloorView {
         mImageView.post(new Runnable() {
             @Override
             public void run() {
-                setImageRatio(cell.optDoubleParam(ParamsUtils.RATIO));
+                setImageRatio(cell.optDoubleParam(StyleEntity.RATIO));
                 try {
-                    setImgMargin(cell.optJsonArrayParam(ParamsUtils.IMGMARGIN));
+                    setImgMargin(cell.optJsonArrayParam(StyleEntity.IMGMARGIN));
                 } catch (JSONException e) {
                 }
                 loadImage(mImageView);

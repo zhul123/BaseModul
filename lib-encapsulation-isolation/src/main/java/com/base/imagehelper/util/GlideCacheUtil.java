@@ -1,10 +1,10 @@
-package com.base.image.util;
+package com.base.imagehelper.util;
 
 import android.content.Context;
 import android.os.Looper;
 import android.text.TextUtils;
 
-import com.base.image.progress.GlideApp;
+import com.base.imagehelper.progress.GlideApp;
 import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.engine.cache.InternalCacheDiskCacheFactory;
 

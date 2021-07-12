@@ -1,4 +1,4 @@
-package com.base.image.transformation;
+package com.base.imagehelper.transformation;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
@@ -15,9 +15,6 @@ import java.security.MessageDigest;
 import androidx.annotation.NonNull;
 
 /**
- * @Author: 杨晓峰
- * @Date: 2020/3/24 14:36
- * @Email: m15201161256@163.com
  * @Description:
  */
 public class RoundedCornersTransformation extends BitmapTransformation {

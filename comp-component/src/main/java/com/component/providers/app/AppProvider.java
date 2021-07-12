@@ -13,33 +13,45 @@ import com.component.providers.base.BaseProvider;
  */
 
 public interface AppProvider extends BaseProvider {
-    String GROUP = "/app";
-    String PROVIDER_PATH = "/provider" + GROUP;
-    String PATH_MAIN = GROUP + "/mainPage";
-    //公共webview加载
-    String COMMON_WEBVIEW_PATH = GROUP + "/commonWebViewPath";
+    interface Path {
+        String GROUP = "/chat";
+        String PROVIDER_PATH = "/provider" + GROUP;
+        String PATH_MAIN = GROUP + "/mainPage";
+        String PATH_WEBVIEW = GROUP + "/webView";
+        String PATH_PLATFORM_SET = GROUP + "/platformSet";
+        String PATH_PLATFORM_ADD = GROUP + "/platformAdd";
+        //公共webview加载
+        String COMMON_WEBVIEW_PATH = GROUP + "/commonWebViewPath";
+    }
 
-    public void gotoActivityByARouterUri(Uri uri);
+    interface ConstantDef{
+        String WEBVIEW_APP = "webview_app";
+        String WEBVIEW_url = "webview_url";
+    }
 
-    public void gotoActivityByARouterUri(Uri uri, Activity activity, int requestCode);
 
-    public void gotoActivityByARouterUri(Uri uri, Context context, NavigationCallback callback);
 
-    public void gotoMainActivity(int selectedIndex);
+    void gotoActivityByARouterUri(Uri uri);
 
-    public void gotoMainActivity(Context context, int selectedIndex, NavigationCallback callback);
+    void gotoActivityByARouterUri(Uri uri, Activity activity, int requestCode);
 
-    public void gotoCommonWebViewActivity(String urlString);
+    void gotoActivityByARouterUri(Uri uri, Context context, NavigationCallback callback);
 
-    public void gotoCommonWebViewActivity(String urlString, String extendParam);
+    void gotoMainActivity(int selectedIndex);
 
-    public void gotoLoginActivity();
+    void gotoMainActivity(Context context, int selectedIndex, NavigationCallback callback);
+
+    void gotoCommonWebViewActivity(String urlString);
+
+    void gotoCommonWebViewActivity(String urlString, String extendParam);
+
+    void gotoLoginActivity();
 
     /**
      *前往微信小程序
      * @param username 填小程序原始id
      * @param path 拉起小程序页面的可带参路径，不填默认拉起小程序首页
      */
-    public void gotoWxMiniProgress(String username, String path);
+    void gotoWxMiniProgress(String username, String path);
 
 }

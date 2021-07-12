@@ -43,11 +43,15 @@ dependencies {
     api libraries.smartrefresh
     api libraries.eventbus
     api libraries.alibabaARouter
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     annotationProcessor libraries.alibabaARouterCompiler
     api libraries.butterknife
     api libraries.tangram
     api libraries.rxjava
     api libraries.rxandroid
+    //沉浸式
+    api libraries.systembartint
+    api libraries.recyclerview
 
     api(libraries.glide) {
         exclude group: "com.android.support"
@@ -69,4 +73,9 @@ dependencies {
     api (libraries.vlayout) {
         transitive = true
     }
+    api libraries.mmkv
+
+    //  用于网络请求
+    api libraries.retrofitNet
+    api libraries.retrofit2Rxjava2AdapterNet
 }

@@ -2,7 +2,6 @@ package com.blocks.views.base;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -12,12 +11,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.base.imagehelper.ImageHelper;
 import com.blocks.views.BuildConfig;
 import com.blocks.views.R;
-import com.blocks.views.utils.ParamsUtils;
-import com.blocks.views.utils.StyleUtils;
+import com.blocks.views.utils.style.StyleUtils;
+import com.lib.block.entity.base.StyleEntity;
+import com.lib.block.style.Params;
 import com.tmall.wireless.tangram.dataparser.concrete.Style;
 import com.tmall.wireless.tangram.structure.BaseCell;
 import com.tmall.wireless.tangram.structure.view.ITangramViewLifeCycle;
@@ -107,7 +106,7 @@ public abstract class BaseFloorView<T extends ViewGroup.LayoutParams> extends Re
 
     public void setLsn() {
         if(onChildClickLsn == null) {
-//            setOnClickListener(this);
+            setOnClickListener(this);
         }
     }
 
@@ -152,8 +151,8 @@ public abstract class BaseFloorView<T extends ViewGroup.LayoutParams> extends Re
     protected void setImgLayoutParams(View v) {
         if (v == null)
             return;
-        int width = dpToPx(getOptInt(ParamsUtils.IMGWIDTH));
-        int height = dpToPx(getOptInt(ParamsUtils.IMGHEIGHT));
+        int width = dpToPx(getOptInt(StyleEntity.IMGWIDTH));
+        int height = dpToPx(getOptInt(StyleEntity.IMGHEIGHT));
         if (width == 0 && height != 0) {
             width = height;
         }
@@ -184,7 +183,7 @@ public abstract class BaseFloorView<T extends ViewGroup.LayoutParams> extends Re
     }
 
     protected void loadImage(ImageView imageView) {
-        loadImage(imageView, ParamsUtils.IMGURL, ParamsUtils.RADIUS);
+        loadImage(imageView, Params.IMGURL, StyleEntity.RADIUS);
     }
 
     /**
@@ -197,10 +196,9 @@ public abstract class BaseFloorView<T extends ViewGroup.LayoutParams> extends Re
     protected void loadImage(ImageView imageView, String imgUrlKey, String radiusKey) {
         if (imageView == null)
             return;
-            System.out.println(String.format("========loadImage;name:%s",mBaseCell.optStringParam(ParamsUtils.TEXT)));
-//            ImageHelper.getInstance().setRadiusDrawable(imageView
-//                    , getOptString(imgUrlKey), R.drawable.floor_img_default, getOptInt(radiusKey));
-            ImageHelper.getInstance().setCommImage(getOptString(imgUrlKey),imageView, R.drawable.floor_img_default);
+            ImageHelper.getInstance().setRadiusDrawable(imageView
+                    , getOptString(imgUrlKey), R.drawable.floor_img_default, getOptInt(radiusKey));
+//            ImageHelper.getInstance().setCommImage(getOptString(imgUrlKey),imageView, R.drawable.floor_img_default);
 
     }
 
@@ -222,10 +220,10 @@ public abstract class BaseFloorView<T extends ViewGroup.LayoutParams> extends Re
         if(TextUtils.isEmpty(paramKey))
             return;
         try{
-            JSONObject datasObject = mBaseCell.extras.optJSONObject(ParamsUtils.DATAS);
+            JSONObject datasObject = mBaseCell.extras.optJSONObject(Params.DATAS);
             if(datasObject == null){
                 datasObject = new JSONObject();
-                mBaseCell.extras.put(ParamsUtils.DATAS,datasObject);
+                mBaseCell.extras.put(Params.DATAS,datasObject);
             }
 
             datasObject.put(paramKey,paramValue);
@@ -267,10 +265,10 @@ public abstract class BaseFloorView<T extends ViewGroup.LayoutParams> extends Re
         } else {
             backStr = mBaseCell.optStringParam(key);
             if (TextUtils.isEmpty(backStr)) {
-                if(mBaseCell.optJsonObjectParam(ParamsUtils.DATAS) != null) {
-                    backStr = mBaseCell.optJsonObjectParam(ParamsUtils.DATAS).optString(key);
-                }else if(mBaseCell.optJsonObjectParam(ParamsUtils.STYLE) != null){
-                    backStr = mBaseCell.optJsonObjectParam(ParamsUtils.STYLE).optString(key);
+                if(mBaseCell.optJsonObjectParam(Params.DATAS) != null) {
+                    backStr = mBaseCell.optJsonObjectParam(Params.DATAS).optString(key);
+                }else if(mBaseCell.optJsonObjectParam(Params.STYLE) != null){
+                    backStr = mBaseCell.optJsonObjectParam(Params.STYLE).optString(key);
                 }
             }
         }
@@ -281,8 +279,8 @@ public abstract class BaseFloorView<T extends ViewGroup.LayoutParams> extends Re
         if (cell == null || TextUtils.isEmpty(key)) {
         } else {
             backStr = cell.optStringParam(key);
-            if (TextUtils.isEmpty(backStr) && cell.optJsonObjectParam(ParamsUtils.DATAS) != null) {
-                backStr = cell.optJsonObjectParam(ParamsUtils.DATAS).optString(key);
+            if (TextUtils.isEmpty(backStr) && cell.optJsonObjectParam(Params.DATAS) != null) {
+                backStr = cell.optJsonObjectParam(Params.DATAS).optString(key);
             }
         }
         return backStr;
@@ -334,8 +332,8 @@ public abstract class BaseFloorView<T extends ViewGroup.LayoutParams> extends Re
             return null;
         } else {
             jsonArray = mBaseCell.optJsonArrayParam(key);
-            if( jsonArray == null && mBaseCell.optJsonObjectParam(ParamsUtils.DATAS) != null) {
-                jsonArray = mBaseCell.optJsonObjectParam(ParamsUtils.DATAS).optJSONArray(key);
+            if( jsonArray == null && mBaseCell.optJsonObjectParam(Params.DATAS) != null) {
+                jsonArray = mBaseCell.optJsonObjectParam(Params.DATAS).optJSONArray(key);
             }
             return jsonArray;
         }

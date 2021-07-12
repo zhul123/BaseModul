@@ -40,6 +40,8 @@ dependencies {
 
     api project(":lib-encapsulation-isolation")
     api project(":comp-component")
+    api project(":comp-block-transform")
+    api project(":lib-block")
     annotationProcessor libraries.alibabaARouterCompiler
     implementation ("org.apache.shiro:shiro-core:1.4.0"){
         exclude(module:'shiro-config-core')
